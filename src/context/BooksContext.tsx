@@ -1,12 +1,25 @@
 'use client';
 
+import { Ibook } from '@/Types/book.types';
 import React, { createContext, ReactNode, useState } from 'react';
 
-export const BookContext = createContext({});
+interface IBookContext {
+  readBooks: Ibook[];
+  setReadBooks: React.Dispatch<React.SetStateAction<Ibook[]>>;
+  wishlist: Ibook[];
+  setWishlist: React.Dispatch<React.SetStateAction<Ibook[]>>;
+}
+
+export const BookContext = createContext<IBookContext>({
+  readBooks: [],
+  setReadBooks: () => {},
+  wishlist: [],
+  setWishlist: () => {},
+});
 
 const BooksProvider = ({ children }: { children: ReactNode }) => {
-  const [readBooks, setReadBooks] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
+  const [readBooks, setReadBooks] = useState<Ibook[]>([]);
+  const [wishlist, setWishlist] = useState<Ibook[]>([]);
 
   const sharedData = {
     readBooks,
