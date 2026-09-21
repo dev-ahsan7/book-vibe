@@ -20,7 +20,7 @@ const BookCard = ({ book }: BookCardProps) => {
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="scale-150 object-cover opacity-60 blur-2xl saturate-150"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/20" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-white/20" />
 
         {/* Badges */}
         <span className="absolute left-3 top-3 z-10 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#1a9a08] backdrop-blur-md">
@@ -33,7 +33,7 @@ const BookCard = ({ book }: BookCardProps) => {
 
         {/* Book */}
         <div className="absolute inset-0 flex items-center justify-center px-10 py-8">
-          <div className="relative h-full w-full max-w-[170px] transition-transform duration-500 [transform:perspective(900px)_rotateY(-8deg)] group-hover:[transform:perspective(900px)_rotateY(0deg)_scale(1.06)]">
+          <div className="relative h-full w-full max-w-42.5 transition-transform duration-500 transform-[perspective(900px)_rotateY(-8deg)] group-hover:transform-[perspective(900px)_rotateY(0deg)_scale(1.06)]">
             <Image
               src={book.image}
               alt={book.bookName}
@@ -42,7 +42,7 @@ const BookCard = ({ book }: BookCardProps) => {
               className="rounded-md object-cover shadow-[0_20px_35px_-8px_rgba(0,0,0,0.55)]"
             />
             {/* spine highlight */}
-            <div className="absolute inset-y-0 left-0 w-2 rounded-l-md bg-gradient-to-r from-black/30 to-transparent" />
+            <div className="absolute inset-y-0 left-0 w-2 rounded-l-md bg-linear-to-r from-black/30 to-transparent" />
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
+import BookCard from '@/components/HomePage/BookCard';
 import { Ibook } from '@/Types/book.types';
-import BookCard from './BookCard';
-import Link from 'next/link';
 
 const getBooks = async () => {
   const res = await fetch('http://localhost:3000/booksData.json');
@@ -36,27 +35,9 @@ const Books = async () => {
 
       {/* Books Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-        {booksData.slice(0, 9).map((book: Ibook) => (
+        {booksData.map((book: Ibook) => (
           <BookCard key={book.bookId} book={book}></BookCard>
         ))}
-      </div>
-
-      <div className="flex justify-center items-center">
-        <Link
-          href="/books"
-          className="group inline-flex w-full  mt-16 items-center justify-center gap-2 rounded-full bg-[#23be0a] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(35,190,10,0.35)] transition-all duration-300 hover:bg-[#1da808] hover:shadow-[0_14px_40px_rgba(35,190,10,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#23be0a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#131313] sm:w-auto"
-        >
-          Browse Our Books
-          <svg
-            viewBox="0 0 24 24"
-            className="h-4 w-4 fill-none stroke-current transition-transform duration-300 group-hover:translate-x-1"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
-        </Link>
       </div>
     </section>
   );
