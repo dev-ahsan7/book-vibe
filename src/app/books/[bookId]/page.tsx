@@ -2,17 +2,19 @@ import ReadButton from '@/components/BooksDetails/ReadButton';
 import WishListButton from '@/components/BooksDetails/WishListButton';
 import { Ibook } from '@/Types/book.types';
 import Image from 'next/image';
+import path from 'path';
+import fs from 'fs/promises';
 
 interface BookDetailsPageProps {
   params: Promise<{ bookId: string }>;
 }
 
 const getBooks = async (): Promise<Ibook[]> => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`,
-  );
-  if (!res.ok) throw new Error('Failed to fetch books');
-  return res.json();
+  const filePath = path.join(process.cwd(), 'public', 'booksData.json');
+
+  const file = await fs.readFile(filePath, 'utf-8');
+
+  return JSON.parse(file);
 };
 
 const Divider = () => <div className="my-4 h-px bg-[#dedede]" />;
